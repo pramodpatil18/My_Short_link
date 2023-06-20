@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="linkShortenerApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Link Shortener</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body ng-controller="MainController as main">
+  <div class="container">
+    <h1>Link Shortener</h1>
+    <form ng-submit="main.generateShortUrl()">
+      <div class="form-group">
+        <label for="urlInput">Enter URL:</label>
+        <input type="text" id="urlInput" class="form-control" ng-model="main.url" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Generate Short URL</button>
+    </form>
+    <br>
+    <div ng-show="main.shortUrl">
+      <p><strong>Short URL:</strong> {{ main.shortUrl }}</p>
+      <p><strong>Expires at:</strong> {{ main.expirationTime }}</p>
+      <a href="{{ main.shortUrl }}" target="_blank">Visit Short URL</a>
+    </div>
+    <div ng-show="main.errorMessage">
+      <p><strong>Error:</strong> {{ main.errorMessage }}</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
